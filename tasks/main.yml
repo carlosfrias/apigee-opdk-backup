@@ -9,3 +9,4 @@
 
 - name: Start component {{ component_profile }}
   shell: '{{ apigee_service }} {{ component_profile }} start'
+  when: component_profile != 'apigee-postgresql'
