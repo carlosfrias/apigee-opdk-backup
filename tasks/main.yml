@@ -1,5 +1,5 @@
 ---
-# tasks file for opdk-backup
+# tasks file for apigee-opdk-backup
 - name: Stop component {{ component_profile }}
   shell: '{{ apigee_service }} {{ component_profile }} stop'
   when: component_profile != 'apigee-postgresql'
