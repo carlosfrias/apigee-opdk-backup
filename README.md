@@ -1,12 +1,12 @@
-Role Name
-=========
+Apigee OPDK Backup
+==================
 
-A brief description of the role goes here.
+This role performs a backup using the apigee-service utility. 
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+It is expected that the apigee-service utility is available. 
 
 Role Variables
 --------------
