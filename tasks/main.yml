@@ -2,7 +2,7 @@
 # tasks file for apigee-opdk-backup
 - name: Stop component {{ component_name }}
   shell: '{{ apigee_service }} {{ component_name }} stop'
-  when: component_name != 'apigee-postgresql' and component_name != 'all'
+  when: component_name != 'apigee-postgresql' or component_name != 'all'
 
 - name: Backup component {{ component_name }}
   shell: '{{ apigee_service }} {{ component_name }} backup'
@@ -14,4 +14,4 @@
 
 - name: Start component {{ component_name }}
   shell: '{{ apigee_service }} {{ component_name }} start'
-  when: component_name != 'apigee-postgresql' and component_name != 'all'
+  when: component_name != 'all'
