@@ -5,10 +5,7 @@
   when: component_name != 'apigee-postgresql' or component_name != 'all'
 
 - name: Start component if it is Postgres
-  import_role:
-    name: apigee-opdk-start-components
-  vars:
-    component_name: "{{ component_name }}"
+  shell: '{{ apigee_service }} {{ component_name }} start'
   when: component_name == 'apigee-postgresql'
 
 - name: Backup component {{ component_name }}
