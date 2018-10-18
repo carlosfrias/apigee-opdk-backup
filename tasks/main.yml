@@ -1,21 +1,35 @@
 ---
 # tasks file for apigee-opdk-backup
 - name: Stop component if it is not Postgres
-  shell: '{{ apigee_service }} {{ component_name }} stop'
+  import_role:
+    name: apigee-opdk-stop-components
+  vars:
+    component_name: "{{ component_name }}"
   when: component_name != 'apigee-postgresql' or component_name != 'all'
 
 - name: Start component if it is Postgres
-  shell: '{{ apigee_service }} {{ component_name }} start'
+  import_role:
+    name: apigee-opdk-start-components
+  vars:
+    component_name: "{{ component_name }}"
   when: component_name == 'apigee-postgresql'
 
 - name: Backup component {{ component_name }}
   shell: '{{ apigee_service }} {{ component_name }} backup'
   when: component_name != 'all'
 
-- name: Backup component {{ component_name }}
+- name: Backup all components
   shell: '{{ apigee_all }} backup'
   when: component_name == 'all'
 
 - name: Start component {{ component_name }}
-  shell: '{{ apigee_service }} {{ component_name }} start'
+  import_role:
+    name: apigee-opdk-start-components
+  vars:
+    component_name: "{{ component_name }}"
   when: component_name != 'all'
+
+- name: Start all components
+  import_role:
+    name: apigee-opdk-start-components
+  when: component_name == 'all'
