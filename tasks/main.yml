@@ -20,14 +20,15 @@
   shell: '{{ apigee_service }} {{ component_name }} start'
   when: component_name != 'all'
 
-- name: Wait For component {{ component_name }}
-  shell: '{{ apigee_service }} {{ component_name }} wait_for_ready'
-  when: component_name != 'all'
+#- name: Wait For component {{ component_name }}
+#  shell: '{{ apigee_service }} {{ component_name }} wait_for_ready'
+#  when: component_name != 'all'
 
 - name: Start all components
   shell: '{{ apigee_all }} start'
   when: component_name == 'all'
 
-- name: Wait For all components
-  shell: '{{ apigee_all }} wait_for_ready'
-  when: component_name == 'all'
+#- name: Wait For all components
+#  shell: '{{ apigee_all }} wait_for_ready'
+#  when: component_name == 'all'
+
